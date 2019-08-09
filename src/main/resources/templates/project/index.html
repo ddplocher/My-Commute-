@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text = "${title}"></span>
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Miles</th>
+        <th>Cost</th>
+        <th>MPG</th>
+    </tr>
+
+    <tr th:each="trip : ${trips}">
+        <td th:text="${trip.name}"></td>
+        <td th:text="${trip.miles}"></td>
+        <td th:text="${trip.cost}"></td>
+        <td th:text ="${trip.mpg}"></td>
+
+    </tr>
+
+</table>
+
+<a href="/project/add">Add Trip</a>
+<a href="/">Home</a>
+</body>
+
+</html>

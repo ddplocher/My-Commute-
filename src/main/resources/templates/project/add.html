@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+
+<form method="post" style="max-width:600px;" th:object="${trip}">
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="miles">Miles</label>
+        <input class="form-control" th:field="*{miles}" />
+        <span th:errors="*{miles}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="cost">Cost</label>
+        <input class="form-control" th:field="*{cost}" />
+        <span th:errors="*{cost}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="mpg">mpg</label>
+        <input class="form-control" th:field="*{mpg}" />
+        <span th:errors="*{mpg}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Trip" />
+</form>
+
+
+</body>
+</html>
