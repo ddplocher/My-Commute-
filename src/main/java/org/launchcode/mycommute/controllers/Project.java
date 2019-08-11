@@ -19,6 +19,7 @@ public class Project {
     @Autowired
     private TripDao tripDao;
 
+
     @RequestMapping(value = "")
     public String project(Model model) {
 
@@ -38,16 +39,20 @@ public class Project {
 
     }
 
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(@ModelAttribute @Valid Trip trip,
                       Errors errors, Model model) {
 
-        if (errors.hasErrors()) {
+        if (errors.hasFieldErrors("total")) {
+
             model.addAttribute("title", "Add Trip");
-            return "project/add";
+            trip.setTotal(trip.getMpg() * trip.getMiles());
+            tripDao.save(trip);
+
         }
 
-        tripDao.save(trip);
+
         model.addAttribute("trips", tripDao.findAll());
         model.addAttribute("title", "Trips");
 
