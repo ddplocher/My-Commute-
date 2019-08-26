@@ -2,10 +2,8 @@
 <html lang="en" xmlns:th="https://thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>My-Commute Home</title>
 
-
-        <title>Title</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -31,32 +29,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="project/add">Add Road Trip</a>
                     </li><br/>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Add Commute</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-        <h1 class="mt-4">Welcome to My Commute! Please Select An Option:</h1>
-        <p><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-            <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<body>
-
-
-</body></p>
 <ul>
+    <H1> Welcome to My Commute!</H1>
     <il>
-        <a href="/project">Estimate Road Trip Cost</a></il>
-    <il>
-        </br>
-        <a href="/track">Track Commute Costs</a></il>
+        <a href="/project/add">Estimate Road Trip Cost</a></il>
+    <br>
+    <il><a href="/register">Register</a></il>
+    <br>
+   <il><a href="/login">Login</a></il>
+    <br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 </ul>
+    </div>
+
 </head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </html>
