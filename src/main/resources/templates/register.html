@@ -11,18 +11,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <h1 th:text="${title}">Default Title</h1>
+</div>
 
 
 <form method="post" style="max-width:600px;" th:object="${user}">
     <div class="form-group">
+
         <label th:for="name">User name</label>
         <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+        <label
+                th:if="${#fields.hasErrors('name')}" th:errors="*{message.name}"
+                class="validation-message"></label>
     </div>
     <div class="form-group">
         <label th:for="password">password</label>
-        <input class="form-control" th:field="*{password}" />
-        <span th:errors="*{password}" class="error"></span>
+        <label
+                th:if="${#fields.hasErrors('password')}" th:errors="*{message.password}"
+                class="validation-message"></label>
+
     </div>
 
 

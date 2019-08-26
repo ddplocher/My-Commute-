@@ -4,6 +4,7 @@ import org.launchcode.mycommute.models.forms.Trip;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,14 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @NotNull
+
+    @NotNull(message ="*Please provide a valid email")
     private String name;
+
     @NotNull
+    @Size(min = 6, message= "*Your password must be at least 6 characters long")
     private String password;
+
 
     @OneToMany
     @JoinColumn(name = "user_id")

@@ -5,6 +5,7 @@ import org.launchcode.mycommute.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,21 +24,21 @@ public class UserController {
         model.addAttribute("title", "Register");
         model.addAttribute(new User());
         model.addAttribute("users", userDao.findAll());
-        return "/register";
+        return "register";
 
     }
 
     @RequestMapping(value ="", method = RequestMethod.POST)
-    public String add(@ModelAttribute @Valid User user, Model model){
+    public String add(@ModelAttribute @Valid User user, Model model, Errors errors){
+
+        if (errors.hasErrors()){
+            model.addAttribute("title", "Register");
+            return "register";
+        }
         model.addAttribute("Title", "Register");
         userDao.save(user);
 
-        return "redirect:/login";
+        return "redirect:/";
     }
 
-    @RequestMapping(value="login", method = RequestMethod.POST)
-    public String login(@ModelAttribute @Valid User user, Model model){
-        model.addAttribute("Title", "Login");
-        return "login";
-    }
 }
