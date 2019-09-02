@@ -24,10 +24,10 @@
                 </li><br/>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="project">My Trips</a>
+                    <a class="nav-link" href="/project">My Trips</a>
                 </li><br/>
                 <li class="nav-item">
-                    <a class="nav-link" href="project/add">Add Road Trip</a>
+                    <a class="nav-link" href="/project/add">Add Road Trip</a>
                 </li><br/>
 
             </ul>
@@ -38,24 +38,25 @@
 <h1>Add a Trip!</h1>
 <form method="post" style="max-width:600px;" th:object="${trip}">
     <ul><div class="form-group">
+
         <label th:for="name">Name</label>
-        <input class="form-control" th:field="*{name}" />
+        <input class="form-control" th:field="*{name}" required="required" placeholder="Name your trip!" />
         <span th:errors="*{name}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="miles">Miles</label>
-        <input class="form-control" th:field="*{miles}" />
+        <input class="form-control" th:field="*{miles}" required="required" placeholder="Distance of trip in miles"/>
         <span th:errors="*{miles}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="cost">Average Cost of Gas</label>
-        <input class="form-control" th:field="*{cost}" />
+        <input class="form-control" th:field="*{cost}" required="required" placeholder="Cost per gallon"/>
         <span th:errors="*{cost}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="mpg">mpg</label>
-        <input class="form-control" th:field="*{mpg}" />
+        <input class="form-control" th:field="*{mpg}"required="required" placeholder="miles/gallon of your vehicle" />
         <span th:errors="*{mpg}" class="error"></span>
     </div>
 

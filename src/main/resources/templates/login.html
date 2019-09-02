@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>My-Commute Login</title>
+    <title>Add Trip!</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,16 +24,17 @@
                 </li><br/>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="project">My Trips</a>
+                    <a class="nav-link" href="/project">My Trips</a>
                 </li><br/>
                 <li class="nav-item">
-                    <a class="nav-link" href="project/add">Add Road Trip</a>
+                    <a class="nav-link" href="/project/add">Add Road Trip</a>
                 </li><br/>
 
             </ul>
         </div>
     </div>
 </nav>
+<body>
 <H1>Please Login to My-Commute!</H1>
 <body>
 <div th:if="${param.error}">

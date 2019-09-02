@@ -10,5 +10,4 @@ public class MyCommuteApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyCommuteApplication.class, args);
 	}
-
 }

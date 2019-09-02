@@ -1,32 +1,34 @@
 package org.launchcode.mycommute.controllers;
 
-import org.launchcode.mycommute.models.data.TripDao;
-import org.launchcode.mycommute.models.data.UserDao;
+import org.launchcode.mycommute.models.data.TripRepository;
+import org.launchcode.mycommute.models.data.UserRepository;
 import org.launchcode.mycommute.models.forms.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("project")
 public class Project {
 
     @Autowired
-    private TripDao tripDao;
+    private TripRepository tripRepository;
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
     @RequestMapping(value = "")
     public String project(Model model) {
-        Iterable <Trip> trips = tripDao.findAll();
+        Iterable <Trip> trips = tripRepository.findAll();
 
 
-
-        model.addAttribute("trips", tripDao.findAll());
+        model.addAttribute("trips", tripRepository.findAll());
 
 
         return "project/index";
@@ -36,7 +38,7 @@ public class Project {
     public String displayAddTripForm(Model model) {
 
         model.addAttribute(new Trip());
-        model.addAttribute("trips", tripDao.findAll());
+        model.addAttribute("trips", tripRepository.findAll());
 
         return "project/add";
 
@@ -44,11 +46,13 @@ public class Project {
 
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Trip trip,
+    public String add(@ModelAttribute @Valid Trip newTrip, Errors errors,
                       Model model) {
+        if(errors.hasErrors()){
+        return "project/add";
 
-
-            tripDao.save(trip);
+        }
+            tripRepository.save(newTrip);
 
 
         return "redirect:/project";

@@ -1,12 +1,10 @@
 package org.launchcode.mycommute.models.forms;
 
 import org.hibernate.annotations.Formula;
-import org.launchcode.mycommute.models.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,29 +12,23 @@ public class Trip {
 
     @Id
     @GeneratedValue
+
     private int id;
 
     @NotNull
-
     private String name;
 
     @NotNull
-
     private Float miles;
 
     @NotNull
-
     private Float cost;
 
     @NotNull
-
     private Float mpg;
 
-    @Formula("cost * mpg")
+    @Formula("cost * (miles/mpg)")
     private Float total;
-
-    @ManyToOne
-    private User user;
 
 
 
