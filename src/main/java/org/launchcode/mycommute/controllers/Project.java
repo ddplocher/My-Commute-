@@ -1,9 +1,11 @@
 package org.launchcode.mycommute.controllers;
 
+import org.launchcode.mycommute.models.User;
 import org.launchcode.mycommute.models.data.TripRepository;
 import org.launchcode.mycommute.models.data.UserRepository;
 import org.launchcode.mycommute.models.forms.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -52,7 +54,12 @@ public class Project {
         return "project/add";
 
         }
-            tripRepository.save(newTrip);
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
+        newTrip.setUser(userRepository.getOne(user.getId()));
+
+             tripRepository.save(newTrip);
 
 
         return "redirect:/project";

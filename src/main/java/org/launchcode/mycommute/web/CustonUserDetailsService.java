@@ -20,7 +20,7 @@ public class CustonUserDetailsService implements UserDetailsService {
 
         User user = userRepository.findByUsername(username);
         if(user== null)
-            throw new UsernameNotFoundException("user does not exists");
+            throw new UsernameNotFoundException("incorrect");
 
         return (user);
     }

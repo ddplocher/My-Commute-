@@ -1,39 +1,41 @@
 package org.launchcode.mycommute.models;
 
 
+import org.launchcode.mycommute.models.forms.Trip;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Entity
-@Table(name= "user")
+
 public class User implements UserDetails {
     @Id
     @GeneratedValue
-    @Column(name="user_id")
     private int id;
 
-    @Column(name= "username")
+
     @NotEmpty
     private String username;
 
-    @Column(name= "password")
+
     @NotEmpty(message ="*Please provide a valid email")
     private String password;
-
-
 
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
-
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Trip> trips = new ArrayList<>();
 
 
     public User(){}
